@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TDMS.Data;
 using TDMS.Data.Core;
-using TDMS.Data.Repositories;
+
 using TDMS.Model;
 
 namespace TDMS.Controllers
@@ -16,16 +16,17 @@ namespace TDMS.Controllers
     [ApiController]
     public class TeleDirectoryController : ControllerBase
     {
-       private TeleDirectoryRepo teleDirectoryRepo { get; set; }
-        public TeleDirectoryController (TeleDirectoryRepo repo)
+        //private TeleDirectoryRepo teleDirectoryRepo { get; set; }
+        private IRepository<TeleDirectory> repoTeledirectory; 
+        public TeleDirectoryController (IRepository<TeleDirectory> _repo)
         {
-            teleDirectoryRepo = repo;
+            this.repoTeledirectory = _repo;
             
         }
           [HttpGet]
         public async Task<ActionResult<IEnumerable<TeleDirectory>>> Get()
         {
-           return await teleDirectoryRepo.Get();
+            return await repoTeledirectory.GetAll();
             
         }
        

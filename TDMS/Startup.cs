@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TDMS.Data;
 using TDMS.Data.Core;
-using TDMS.Data.Repositories;
+
 
 namespace TDMS
 {
@@ -32,8 +32,9 @@ namespace TDMS
             services.AddControllers();
             services.AddDbContext<MyDbContext>
              (opt => opt.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
-          
-                services.AddScoped<TeleDirectoryRepo>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(CoreRepository<>));
+                //services.AddScoped(typeof(CoreRepository<>),typeof(TeleDirectoryRepo));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

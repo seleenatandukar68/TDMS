@@ -7,55 +7,55 @@ using System.Threading.Tasks;
 
 namespace TDMS.Data.Core
 {
-    public abstract class CoreRepository<TEntity, TContext> : IRepository<TEntity>
-       where TEntity : class, IEntity
-       where TContext : DbContext
+    public  class CoreRepository<T> :IRepository<T>
+       where T : class, IEntity
+       
     {
-        private readonly TContext context;
-        public CoreRepository(TContext context)
+        protected readonly MyDbContext context;
+        public CoreRepository(MyDbContext context)
         {
             this.context = context;
         }
-        public async Task<TEntity> Add(TEntity entity)
+        public async Task<T> Add(T entity)
         {
-            context.Set<TEntity>().Add(entity);
+            context.Set<T>().Add(entity);
             await context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<TEntity> Delete(int id)
+        public async Task<T> Delete(int id)
         {
-            var entity = await context.Set<TEntity>().FindAsync(id);
+            var entity = await context.Set<T>().FindAsync(id);
             if (entity == null)
             {
                 return entity;
             }
 
-            context.Set<TEntity>().Remove(entity);
+            context.Set<T>().Remove(entity);
             await context.SaveChangesAsync();
 
             return entity;
         }
 
-        public async Task<TEntity> Get(int id)
+        public async Task<T> Get(int id)
         {
-            return await context.Set<TEntity>().FindAsync(id);
+            return await context.Set<T>().FindAsync(id);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public async Task<List<T>> GetAll()
         {
-            return await context.Set<TEntity>().ToListAsync();
+            return await context.Set<T>().ToListAsync();
         }
 
-        public async Task<TEntity> Update(TEntity entity)
+        public async Task<T> Update(T entity)
         {
             context.Entry(entity).State = EntityState.Modified;
             await context.SaveChangesAsync();
             return entity;
         }
-        public async Task<List<TEntity>> GetAllByCondition(Expression<Func<TEntity, bool>> condition)
+        public async Task<List<T>> GetAllByCondition(Expression<Func<T, bool>> condition)
         {
-            return await context.Set<TEntity>().Where(condition).ToListAsync();
+            return await context.Set<T>().Where(condition).ToListAsync();
         }
     }
 }
