@@ -7,7 +7,7 @@ using TDMS.Data;
 
 namespace TDMS.Model
 {
-    public class TeleDirectory : IEntity
+    public class TeleDirectory : BaseEntity
     {
         public int Id { get; set; }
 
@@ -15,7 +15,7 @@ namespace TDMS.Model
         [StringLength(200)]
         public string Name { get; set; }
         public string Address { get; set; }
-        public Boolean Gender { get; set; } // 1 male 2 female 3 others 
+        public Boolean Gender { get; set; } // 0 male 1 female 
 
         [Required]
         [StringLength(15)]

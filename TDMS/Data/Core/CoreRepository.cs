@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace TDMS.Data.Core
 {
     public  class CoreRepository<T> :IRepository<T>
-       where T : class, IEntity
+       where T :  BaseEntity
        
     {
         protected readonly MyDbContext context;

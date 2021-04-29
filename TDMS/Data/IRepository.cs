@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TDMS.Data
 {
-    public interface IRepository<T> where T:  IEntity
+    public interface IRepository<T> where T:  BaseEntity
     {
         Task<List<T>> GetAll();
         Task<T> Get(int id);
