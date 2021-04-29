@@ -59,7 +59,6 @@ C:\Users\prani\Source\Repos\TDMS\TDMS\obj\Debug\netcoreapp3.1\TDMS.dll
 C:\Users\prani\Source\Repos\TDMS\TDMS\obj\Debug\netcoreapp3.1\TDMS.pdb
 C:\Users\prani\Source\Repos\TDMS\TDMS\obj\Debug\netcoreapp3.1\TDMS.genruntimeconfig.cache
 C:\Users\prani\Source\Repos\TDMS\TDMS\obj\Debug\netcoreapp3.1\TDMS.csprojAssemblyReference.cache
-C:\Users\prani\Source\Repos\TDMS\TDMS\bin\Debug\netcoreapp3.1\client-app\cypress.json
 C:\Users\prani\Source\Repos\TDMS\TDMS\bin\Debug\netcoreapp3.1\client-app\package.json
 C:\Users\prani\Source\Repos\TDMS\TDMS\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.NodeServices.dll
 C:\Users\prani\Source\Repos\TDMS\TDMS\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.dll
@@ -79,3 +78,4 @@ C:\Users\prani\Source\Repos\TDMS\TDMS\bin\Debug\netcoreapp3.1\Swashbuckle.AspNet
 C:\Users\prani\Source\Repos\TDMS\TDMS\obj\Debug\netcoreapp3.1\TDMS.csproj.CoreCompileInputs.cache
 C:\Users\prani\Source\Repos\TDMS\TDMS\obj\Debug\netcoreapp3.1\TDMS.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\prani\Source\Repos\TDMS\TDMS\obj\Debug\netcoreapp3.1\TDMS.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\prani\Source\Repos\TDMS\TDMS\bin\Debug\netcoreapp3.1\client-app\package-lock.json

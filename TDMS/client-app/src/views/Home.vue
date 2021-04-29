@@ -1,19 +1,35 @@
 <template>
   <div class="container">
-    hello
-    <img alt="Vue logo" src="@/assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    this is home
+ <div v-for="item in teles" v-bind:key="item.id">
+  {{item.name}}
+</div>
+    
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import {getTeleDirectory} from "@/core/teleDirectory.api.js"
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld,
+  data(){
+    return{
+      teles: []
+    }
   },
+  mounted(){
+    this.fetchUsers();
+  },
+  methods:{
+   async fetchUsers () {
+
+      const response = await getTeleDirectory();
+     
+      this.teles = response.data;
+    }
+  }
+
 };
 </script>

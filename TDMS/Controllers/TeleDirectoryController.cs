@@ -31,6 +31,12 @@ namespace TDMS.Controllers
             return await repoTeledirectory.GetAll();
             
         }
-       
+        [HttpPost]
+        public async Task<ActionResult<TeleDirectory>> Post(TeleDirectory teleDir)
+        {
+            return Ok(await repoTeledirectory.Add(teleDir));
+
+        }
+
     }
 }

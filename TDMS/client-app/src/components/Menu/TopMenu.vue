@@ -12,7 +12,7 @@
          <router-link class="nav-link" to="/Home">Home</router-link>
       </li>
       <li class="nav-item">
-         <router-link class="nav-link" to="/About">About</router-link>
+         <router-link class="nav-link" to="/Add">Add</router-link>
       </li>
    
       <li class="nav-item dropdown">
