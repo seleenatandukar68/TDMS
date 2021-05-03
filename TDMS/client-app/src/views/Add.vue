@@ -1,65 +1,98 @@
 <template>
   <div class="container container-fluid">
     <div class="card">
-    <div class=" card-header">
-      <div class="row p-3">
-        <h4> Add Telephone Details </h4>
-
+      <div class="card-header">
+        <div class="row p-3">
+          <h4>Add Telephone Details</h4>
+        </div>
       </div>
-      </div>
-      <div class="card-body"> 
+      <div class="card-body">
+        <form>
         <div class="form-group">
-        <div class="row"> 
-         <label class="col-md-2 col-form-label">Name</label>
-          <input class="col-md-4 form-control" type="text" v-model="name"/>
+          <div class="row p-1">
+            <label class="col-md-2 col-form-label">Name</label>
+            <input class="col-md-4 form-control" type="text" v-model="name" />
+          </div>
+          <div class="row p-1">
+            <label class="col-md-2 col-form-label">Address</label>
+            <input
+              class="col-md-4 form-control"
+              type="text"
+              v-model="address"
+            />
+          </div>
+          <div class="row p-1">
+            <label class="col-md-2 col-form-label">Phone No</label>
+            <input class="col-md-4 form-control" type="text" v-model="phone" />
+          </div>
+          <div class="row p-1">
+            <label class="col-md-2 col-form-label">Gender</label>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="genderMale"
+                value="0"
+                
+                v-model="gender"
+              />
+              <label class="form-check-label" for="genderMale"> Male </label>
+              </div>
+              <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="genderFemale"
+                value="1"
+                
+                v-model="gender"
+              />
+              <label class="form-check-label" for="genderFemale">
+                Female
+              </label>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-md-12 float-right">
+          <button class="btn btn-primary" @click="Save">Save</button>
+              </div>
         </div>
-          <div class="row"> 
-         <label class="col-md-2 col-form-label">Address</label>
-          <input class="col-md-4 form-control" type="text" v-model="address"/>
         </div>
-          <div class="row"> 
-         <label class="col-md-2 col-form-label">Phone No</label>
-          <input class="col-md-4 form-control" type="text" v-model="phone"/>
-        </div>
-        </div>
-        <div class="row">
-          <button class="btn btn-primary" @click="Save"> Save </button> 
-
-        </div>
+        </form>
+      
       </div>
     </div>
-    
   </div>
 </template>
 <script>
-import {postTeleDirectory} from "@/core/teleDirectory.api.js"
+import { postTeleDirectory } from "@/core/teleDirectory.api.js";
 export default {
-  name: 'Add',
-  data(){
-    return{
-      name:null,
-      address:null,
-      phone:null
-    }
+  name: "Add",
+  data() {
+    return {
+      name: null,
+      address: null,
+      phone: null,
+      gender: 0
+    };
   },
   computed: {
-    payload(){
-      return{
-      Name: this.name,
-      Address: this.address,
-      PhoneNo: this.phone
-      }
-
-    }
+    payload() {
+      return {
+        Name: this.name,
+        Address: this.address,
+        PhoneNo: this.phone,
+        Gender: this.gender
+      };
+    },
   },
-  methods:{
-    async Save(){
+  methods: {
+    async Save() {
       const response = await postTeleDirectory(this.payload);
-      if(response.status == 200){
+      if (response.status == 200) {
         //
       }
-    }
-
-  }
-}
+    },
+  },
+};
 </script>
