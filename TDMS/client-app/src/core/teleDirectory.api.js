@@ -3,6 +3,13 @@ import { httpClient } from "@/core/httpClient.js"
 const postTeleDirectory = (data) => {
     console.log(data);
     const response = httpClient.post("TeleDirectory",data);
+   // console.log(response);
+    return response;
+
+}
+const putTeleDirectory = (data) => {
+    console.log(data);
+    const response = httpClient.put("TeleDirectory",data);
     console.log(response);
     return response;
 
@@ -18,6 +25,7 @@ const getTeleDirectory = () => {
 }
 export {
     postTeleDirectory,
-    getTeleDirectory
+    getTeleDirectory,
+    putTeleDirectory
 }
 
