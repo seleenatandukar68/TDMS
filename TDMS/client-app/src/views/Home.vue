@@ -18,7 +18,7 @@
           <td>
             {{ item.address }}
           </td>
-          <td v-if="item.gender == true">
+          <td v-if="item.gender == false">
             Male
            
           </td>
@@ -30,8 +30,9 @@
             {{ item.phoneNo }}
           </td>
           <td>
-            <a href="#" @click.prevent="toggleEdit(this,index)" class="btn btn-md btn-default">
-          <img height="15px" src="@/assets/svg/pencil.svg">
+            <a href="#" @click.prevent="toggleEdit(item,index)" class="btn btn-md btn-default">
+              <svgicon icon="pencil" width="22" height="18" ></svgicon>
+          
         </a>
          
           </td>
@@ -47,11 +48,11 @@
           <td >
             <div class="row ml-4">
                  <input
-                class="  form-check-input"
+                class="form-check-input"
                 type="radio"
                 name="gendermale"
-                value="true"
-                :checked="item.gender"
+                value="false"
+                :checked="item.gender == false"
                 v-model="item.gender"
               />
               <label class="form-check-label" for="gendermale">
@@ -60,15 +61,15 @@
             </div>
           <div class="row ml-4">
             <input
-                class="  form-check-input"
+                class="form-check-input"
                 type="radio"
                 name="genderFemale"
-                value="false"
-                :checked="!item.gender"
+                value="true"
+                checked="item.gender == true"
                 v-model="item.gender"
               />
               <label class=" form-check-label" for="genderFemale">
-                Female {{!item.gender}}
+                Female {{item.gender}}
               </label>
           </div>
            
@@ -78,7 +79,8 @@
           </td>
           <td>
             <a href="#" @click.prevent="Save(item)" class="btn btn-md btn-default">
-          <img height="15px" src="@/assets/svg/transfer.svg">
+          
+         <svgicon icon="check" width="22" height="18" color="#dc3545"></svgicon>
         </a>
           </td>
         </tr>
@@ -96,11 +98,16 @@ export default {
   data() {
     return {
       teles: [],
-      editOffset:-1
+      editOffset:-1,
+      
+  
     };
   },
   mounted() {
     this.fetchUsers();
+  },
+  computed:{
+      
   },
   methods: {
     async fetchUsers() {
@@ -109,13 +116,11 @@ export default {
       this.teles = response.data;
     },
     toggleEdit (ev,index){
+      console.log(ev);
+      this.comparisonvalue = ev.gender;
+      console.log(this.comparisonvalue);
       this.editOffset = index;
-    
-        // Focus input field
-       
-        //     $this.nextTick(function() {
-    		// 	ev.$$.input.focus();
-	  		// })   
+ 
         
       },
       async Save(item){
@@ -124,7 +129,7 @@ export default {
            Name: item.name,
         Address: item.address,
         PhoneNo: item.phoneNo,
-        Gender: item.gender}
+        Gender: this.gender}
         const response = await putTeleDirectory(data);
       if (response.status == 200) {
         //
