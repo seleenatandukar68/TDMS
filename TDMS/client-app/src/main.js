@@ -4,7 +4,9 @@ import router from "./router";
 import store from "./store";
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import VueSVGIcon from 'vue-svgicon';
+import '@/components/icons';
+Vue.use(VueSVGIcon)
 
 Vue.config.productionTip = false;
 
