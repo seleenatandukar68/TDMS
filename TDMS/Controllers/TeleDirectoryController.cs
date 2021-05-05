@@ -19,17 +19,23 @@ namespace TDMS.Controllers
     public class TeleDirectoryController : ControllerBase
     {
         //private TeleDirectoryRepo teleDirectoryRepo { get; set; }
-        private IRepository<TeleDirectory> repoTeledirectory; 
-        public TeleDirectoryController (IRepository<TeleDirectory> _repo)
+        private IRepository<TeleDirectory> repoTeledirectory;
+        public TeleDirectoryController(IRepository<TeleDirectory> _repo)
         {
             this.repoTeledirectory = _repo;
-            
+
         }
-          [HttpGet]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<TeleDirectory>>> Get()
         {
             return await repoTeledirectory.GetAll();
-            
+
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<TeleDirectory>>> GetById(int id)
+        {
+            return await repoTeledirectory.GetAllByCondition(x => x.Id == id);
+
         }
         [HttpPost]
         public async Task<ActionResult<TeleDirectory>> Post(TeleDirectory teleDir)
@@ -37,6 +43,21 @@ namespace TDMS.Controllers
             return Ok(await repoTeledirectory.Add(teleDir));
 
         }
+
+        [HttpPut]
+        public async Task<ActionResult<TeleDirectory>> Update(TeleDirectory teleDir)
+        {
+            return Ok(await repoTeledirectory.Update(teleDir));
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<TeleDirectory>> Delete(int id)
+        {
+            return Ok(await repoTeledirectory.Delete(id));
+
+        }
+
 
     }
 }

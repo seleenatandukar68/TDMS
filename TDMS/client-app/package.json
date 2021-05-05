@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "icons": "vsvg -s src/assets/svg -t src/components/icons",
+    "prebuild": "npm run icons"
   },
   "dependencies": {
     "bootstrap": "^4.6.0",
@@ -14,6 +16,9 @@
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-svgicon": "^3.2.9",
+    "vue-toasted": "^1.1.28",
+    "vuetify": "^2.4.11",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -24,10 +29,14 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
+    "deepmerge": "^4.2.2",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
+    "fibers": "^5.0.0",
     "prettier": "^2.2.1",
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
     "vue-template-compiler": "^2.6.11"
   }
 }
