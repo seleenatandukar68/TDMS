@@ -58,26 +58,28 @@
               <input
                 class="form-check-input"
                 type="radio"
-                name="gendermale"
+                :name="item.id"
                 value="false"
-                :checked="item.gender == false"
+                :checked="item.gender == 'false'"
                 v-model="item.gender"
+                @change="item.gender = $event.target.value"
               />
               <label class="form-check-label" for="gendermale">
-                Male {{ item.gender }}
+                Male 
               </label>
             </div>
             <div class="row ml-4">
               <input
                 class="form-check-input"
                 type="radio"
-                name="genderFemale"
+                :name="item.id"
+                :checked="item.gender == 'true'"
                 value="true"
-                checked="item.gender == true"
+               @change="item.gender = $event.target.checked"
                 v-model="item.gender"
               />
               <label class="form-check-label" for="genderFemale">
-                Female {{ item.gender }}
+                Female 
               </label>
             </div>
           </td>
@@ -141,9 +143,9 @@ export default {
       this.teles = response.data;
     },
     toggleEdit(ev, index) {
-      console.log(ev);
+     
       this.comparisonvalue = ev.gender;
-      console.log(this.comparisonvalue);
+     
       this.editOffset = index;
     },
     async Save(item) {
@@ -152,7 +154,7 @@ export default {
         Name: item.name,
         Address: item.address,
         PhoneNo: item.phoneNo,
-        Gender: this.gender,
+        Gender: item.gender,
       };
       const response = await putTeleDirectory(data);
       if (response.status == 200) {
